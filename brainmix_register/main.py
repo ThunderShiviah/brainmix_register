@@ -1,4 +1,4 @@
-from register_methods import * #Is this a bad idea? In this case I don't see risk of collision.
+from register_methods import * #I need to change this so I'm not wildcard importin
 from pipeline import pipeline
 import numpy as np
 
