@@ -1,4 +1,4 @@
-# allen_api_wrapper: The Allen Brain Institute API Wrapper
+# Brainmix_register: A registration method built using scikit-image for the University of Oregon brainmix project. 
 
 allen_api_wrapper is a python package that allows for simple access to [The Allen Brain Institute's mousebrain API](http://help.brain-map.org/display/mousebrain/API). allen_api_wrapper aims to be as easy to use as possible.
 
