@@ -1,5 +1,5 @@
 from nose.tools import *
-import allen_api_wrapper
+import brainmix-register
 
 def setup():
     print("SETUP!")
