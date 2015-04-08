@@ -17,5 +17,6 @@ def registration(stack):
     assert isinstance(stack, list) == True, "stack is not a list: %r" % stack
 
     transform = register_pipeline(stack)
-    show_images(apply_transform(stack, transform)) 
+    # show_images(apply_transform(stack, transform)) 
+    return transform
     
