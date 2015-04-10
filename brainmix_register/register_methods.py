@@ -21,7 +21,7 @@ from matplotlib import pyplot as plt
 """This module provides a list of functions to aid in registration. 
 The design philosophy of each function is to create a 'single input single output' method that will allow for UNIX style piping.
 
-Input to the input layer should be of the form [src, dst] where both src and dst
+Input: A list [src, dst] where both src and dst
 are numpy arrays of the same size. 
 
 Output of the final 'Apply transform' layer will be of the form [warped_src, dst] where
