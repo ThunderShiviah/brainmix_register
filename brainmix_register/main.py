@@ -14,7 +14,7 @@ register_pipeline  = pipeline(
         
 def registration(stack):
     # TODO: put in a good docstring. I need to figure out what the input type on stack is.
-    assert isinstance(stack, list) == True, "stack is not a list: %r" % stack
+     assert isinstance(stack, list) == True, "stack is not a list: %r" % stack
 
     transform = register_pipeline(stack)
     # show_images(apply_transform(stack, transform)) 
