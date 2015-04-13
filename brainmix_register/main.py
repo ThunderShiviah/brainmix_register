@@ -35,8 +35,12 @@ if __name__ == "__main__":
     img1 = io.imread(file1 ,as_grey=True) # query image
     img2 = io.imread(file2 ,as_grey=True) #training image
 
-    '''convert images to stack'''
-    stack = [img1, img2]
-    assert stack[0].shape == stack[1].shape
-
-    registration(stack)
+    '''convert images to list stack'''
+    try:
+        #stack = [img1, img2]
+        stack = ['a', 'b']
+        assert stack[0].shape == stack[1].shape
+        print(type(stack))
+        registration(stack)
+    except:
+       print("registration on {stack_type} failed").format(stack_type=type(stack)) 
