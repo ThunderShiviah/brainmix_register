@@ -37,10 +37,8 @@ if __name__ == "__main__":
 
     '''convert images to list stack'''
     try:
-        #stack = [img1, img2]
-        stack = ['a', 'b']
+        stack = [img1, img2]
         assert stack[0].shape == stack[1].shape
-        print(type(stack))
         registration(stack)
     except:
        print("registration on {stack_type} failed").format(stack_type=type(stack)) 
