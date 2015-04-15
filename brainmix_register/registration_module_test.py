@@ -49,7 +49,7 @@ def registration_module_test(inputDir):
     '''
     # Get all jpg files in directory
     imageFiles = glob.glob(os.path.join(inputDir, '*.jpg'))
-    imageVolume = skimage.io.ImageCollection(imageFiles).concatenate()
+    imageVolume = skimage.io.ImageCollection(imageFiles, as_grey=True).concatenate()
 
     # If we have ITK, use that algorithm
     if itkLoaded:
