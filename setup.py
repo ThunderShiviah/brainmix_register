@@ -5,16 +5,16 @@ except ImportError:
     from distutils.core import setup
 
 config = {
-	'description': 'A python wrapper for the Allan Brain Institute Mouse Brain Atlas.',
+	'description': 'A python image registration module using scikit image.',
 	'author': 'Thunder Shiviah',
-	'url': 'https://github.com/ThunderShiviah/AllenBrainAtlasAPI/',
-	'download_url': 'git@github.com:ThunderShiviah/AllenBrainAtlasAPI.git',
+	'url': 'https://github.com/ThunderShiviah/brainmix_register/',
+	'download_url': 'git@github.com:ThunderShiviah/brainmix_register.git',
 	'author_email': 'thunder.shiviah@gmail.com',
 	'version': '0.1',
 	'install_requires': ['nose'],
-	'packages': ['allen_api_wrapper'],
+	'packages': ['brainmix_register'],
 	'scripts': [],
-	'name': 'allen_api_wrapper'
+	'name': 'brainmix_register'
 }
 
 setup(**config)
