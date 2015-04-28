@@ -1,23 +1,23 @@
 # Brainmix_register: A registration method built using scikit-image for the University of Oregon brainmix project. 
 
-allen_api_wrapper is a python package that allows for simple access to [The Allen Brain Institute's mousebrain API](http://help.brain-map.org/display/mousebrain/API). allen_api_wrapper aims to be as easy to use as possible.
+brainmix_register is a python image registration library built on [scikit-image](http://scikit-image.org/).
 
 # Installation
-Currently, allen_api_wrapper is being developed using python 3.4. The recommended way to install is by downloading the repository via github:
+Currently, brainmix_register is being developed using python 2.7. The recommended way to install is by downloading the repository via github:
 
 ```
-git clone git@github.com:ThunderShiviah/AllenBrainAtlasAPI.git
+git clone git@github.com:ThunderShiviah/brainmix_register.git 
 ```
 
-Then navigate to AllenBrainAtlasAPI/code/allen_api_wrapper/skeleton  (the directory containing setup.py) and run the following command:
+Then navigate to the top directory  (the directory containing setup.py) and run the following command:
 
 ```
-python3.4 setup.py install
+python setup.py install
 ```
 
-To uninstall use pip3.4:
+To uninstall use pip:
 ```
-pip3.4 uninstall allen_api_wrapper
+pip uninstall brainmix_register
 ```
 
 To run tests, navigate to the directory above tests and run the following command:
