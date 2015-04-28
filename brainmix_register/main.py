@@ -10,20 +10,22 @@ from matplotlib import pyplot as plt
 
 """The transform pipeline outputs a transform"""
 register_pipeline  = pipeline(
-        downsample_image,
+        #downsample_image,
         #subtract_background,
         #create_binary,
-        orb_extractor,
+        #orb_extractor,
         estimate_transform
         ) 
 
 
 def registration(stack):
     # TODO: put in a good docstring. I need to figure out what the input type on stack is.
-    assert isinstance(stack, list) == True, "stack is not a list: %r" % stack
-
+    # assert isinstance(stack, list) == True, "stack is not a list: %r" % stack
+    
+    stack = [img for img in stack] #TODO: This is a temp solution for taking in a multidimensional ndarray of images.
+    
     transform = register_pipeline(stack)
-    show_images(apply_transform(stack, transform)) 
+    #show_images(apply_transform(stack, transform)) 
     return transform
 
 if __name__ == "__main__":
