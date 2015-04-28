@@ -33,7 +33,7 @@ except ImportError:
 
 brainmixloaded = True
 try:
-    import main as bm # This only works if registration_module_test is in the same folder as main in brainmix_register.
+    import registration as bm # This only works if registration_module_test is in the same folder as main in brainmix_register.
 except ImportError:
     brainmixloaded = False
     sys.exit("please check that brainmix_register is installed to use this script")
