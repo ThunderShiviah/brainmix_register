@@ -71,6 +71,8 @@ def registration(img_stack):
     """input: ndarray of images
     ouput: ndarray of registered images
     """
+
+    assert len(img_stack) == 3
     reg_stack = reg_iter(img_stack)
 
     if not np.array_equal(img_stack[0], reg_stack[0]):
