@@ -1,4 +1,4 @@
-from register_methods import * #I need to change this so I'm not wildcard importin
+from register_methods import * #I need to change this so I'm not wildcard importing
 from pipeline import pipeline
 import numpy as np
 ### For Testing ###

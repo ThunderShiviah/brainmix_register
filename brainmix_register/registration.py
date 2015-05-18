@@ -72,7 +72,7 @@ def registration(img_stack):
     ouput: ndarray of registered images
     """
 
-    assert len(img_stack) == 3
+    assert len(img_stack) == 3  # Check that images are greyscale.
     reg_stack = reg_iter(img_stack)
 
     if not np.array_equal(img_stack[0], reg_stack[0]):
