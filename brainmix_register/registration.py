@@ -1,3 +1,4 @@
+import sys
 import os, glob
 import numpy as np
 from skimage import feature
@@ -12,7 +13,10 @@ from skimage.color import gray2rgb
 
 def reg(src, dst):
     """Takes in a source and destination image and returns a
-    registered source image.
+    registered destination (target) image.
+
+    src: the reference image
+    dst: the image to register
     """
     shifts, err, phasediff = feature.register_translation(src, dst)
     tform = tf.AffineTransform(translation=shifts)
@@ -26,11 +30,11 @@ def reg(src, dst):
 def reg_iter(stack):
     """
     input: a stack of images and registers each one using the first
-    image as the destination.
+    image as the source.
     output: a registered stack.
     """
-    dst = stack[0]
-    reg_stack = [reg(src, dst) for src in stack]
+    src = stack[0]
+    reg_stack = [reg(src, dst) for dst in stack]
     return reg_stack
 
 # --------------View overlayed result--------------------------
@@ -72,7 +76,7 @@ def registration(img_stack):
     ouput: ndarray of registered images
     """
 
-    assert len(img_stack) == 3  # Check that images are greyscale.
+    # assert len(img_stack) == 3  # Check that images are greyscale.
     reg_stack = reg_iter(img_stack)
 
     if not np.array_equal(img_stack[0], reg_stack[0]):
@@ -82,8 +86,36 @@ def registration(img_stack):
     return io.concatenate_images(reg_stack)
 
 if __name__ == "__main__":
+    # Check if running with version 2 or 3. If 2, use raw_input().
+    # Currently, python 3 causes the script to exit.
+    # TODO: if v. 3, then parse commandline arguments with input()
+    # else, use raw_input().
+    if sys.version_info >= (3,0):
+        sys.stdout.write("Sorry, requires Python 2.x, not Python 3.x\n")
+        sys.exit(1)
+    
+    if len(sys.argv) == 2: 
+        inputDir = sys.argv[-1] 
+        imageFiles = glob.glob(os.path.join(inputDir, '*.jpg'))
+        imageVolume = io.ImageCollection(imageFiles, as_grey=True).concatenate()
+        stack = imageVolume
+
+        reg_stack = registration(stack)
+        i = 0;
+        for img in reg_stack:
+            io.imsave('reg{}',img).format(i)
+            i += 1
+        sys.exit(1)
+
+
+    elif len(sys.argv) > 2: 
+        print("Script takes in one or zero arguments.")
+        sys.exit(1)
+
+    else: 
+        inputDir = '../data/test/'
+    
     # ------------------Create input ndarray------------------------
-    inputDir = '../data/test/'
     imageFiles = glob.glob(os.path.join(inputDir, '*.jpg'))
     imageVolume = io.ImageCollection(imageFiles, as_grey=True).concatenate()
     stack = imageVolume
