@@ -15,7 +15,15 @@ if __name__ == "__main__":
     imageVolume = io.ImageCollection(imageFiles, as_grey=True).concatenate()
     stack = imageVolume
 
+    # ------------------Check that single image registration works----
 
+    src = stack[0]
+    dst = stack[1]
+
+    reg_dst = reg.reg(src, dst)
+
+    # ------------- Check that stack registration works -----------
+    
     reg_stack = reg.registration(stack)
 
     merged = [reg.overlay_pics(stack[0], img) for img in stack]
