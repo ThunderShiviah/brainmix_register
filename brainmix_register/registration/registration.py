@@ -6,6 +6,7 @@ from skimage import io
 from skimage import transform as tf
 import matplotlib.pyplot as plt
 from skimage.color import gray2rgb
+from .. import data  # Should this be a relative import?
 
 
 # -----------------Registration function-------------------------
@@ -13,13 +14,17 @@ from skimage.color import gray2rgb
 
 def reg(src, dst):
     """Takes in a source and destination image and returns a
-    registered destination (target) image.
+    registered destination (target) image. See scikit-image 
+    feature.register_translation for more information
 
     src: the reference image
     dst: the image to register
+
     """
-    shifts, err, phasediff = feature.register_translation(src, dst)
-    tform = tf.AffineTransform(translation=shifts)
+    upsample_factor = 100
+    shifts, err, phasediff = feature.register_translation(src, dst, \
+    upsample_factor)
+    tform = tf.AffineTransform(translation=shifts[::-1])
     reg_dst = tf.warp(dst, inverse_map=tform.inverse)
 
     return reg_dst
@@ -33,7 +38,7 @@ def reg_iter(stack):
     image as the source.
     output: a registered stack.
     """
-    src = stack[0]
+    src = stack[1]
     reg_stack = [reg(src, dst) for dst in stack]
     return reg_stack
 
@@ -90,6 +95,7 @@ if __name__ == "__main__":
     # Currently, python 3 causes the script to exit.
     # TODO: if v. 3, then parse commandline arguments with input()
     # else, use raw_input().
+
     if sys.version_info >= (3,0):
         sys.stdout.write("Sorry, requires Python 2.x, not Python 3.x\n")
         sys.exit(1)
@@ -116,11 +122,12 @@ if __name__ == "__main__":
         inputDir = '../data/test/'
     
     # ------------------Create input ndarray------------------------
-    imageFiles = glob.glob(os.path.join(inputDir, '*.jpg'))
-    imageVolume = io.ImageCollection(imageFiles, as_grey=True).concatenate()
-    stack = imageVolume
+    #imageFiles = glob.glob(os.path.join(inputDir, '*.jpg'))
+    #imageVolume = io.ImageCollection(imageFiles, as_grey=True).concatenate()
+    #stack = imageVolume
 
-    reg_stack = registration(stack)
+    # reg_stack = registration(stack)
+    reg_stack = data.test()
 
     print('stack is of type', type(stack))
     print('stack dimensions are', stack.shape)
