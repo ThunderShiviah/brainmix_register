@@ -5,6 +5,8 @@ from skimage import io
 from . import all, test
 from skimage.io import imread, use_plugin
 
+__all__ = ['all','test']
+
 def load_image(file_name, inputDir):
     """Loads an image."""
 
