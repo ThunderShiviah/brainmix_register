@@ -1,9 +1,20 @@
 #!/usr/bin/env python
 from matplotlib import pyplot as plt
-from .. import data
+from brainmix_register import data
+from brainmix_register.registration.registration import main as register
+from brainmix_register.registration.registration import overlay_pics
+from skimage import io
 
-def demo():
-    reg_stack = data.test()
+def main():
+    """Loads an example image stack from data.test_stack() and registers the
+    stack using the main register function in sub-package registration. 
+    Returns data about stack type, stack dimensions. Displays the pre and 
+    post registered stack.
+    
+    Takes no arguments."""
+
+    stack = data.test_stack()
+    reg_stack = register(stack)
 
     print('stack is of type', type(stack))
     print('stack dimensions are', stack.shape)
@@ -39,7 +50,6 @@ def demo():
     fig.subplots_adjust(wspace=0.02, hspace=0.2,
                         top=0.9, bottom=0.05, left=0, right=1)
 
-    io.imshow()
     plt.show()
 
 if __name__ == "__main__":

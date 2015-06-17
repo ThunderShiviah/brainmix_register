@@ -6,7 +6,7 @@ from skimage import io
 from skimage import transform as tf
 import matplotlib.pyplot as plt
 from skimage.color import gray2rgb
-from .. import data  # Should this be a relative import?
+from brainmix_register import data  # Should this be a relative import?
 
 
 # -----------------Registration function-------------------------
@@ -38,7 +38,7 @@ def reg_iter(stack):
     image as the source.
     output: a registered stack.
     """
-    src = stack[1]
+    src = stack[0]
     reg_stack = [reg(src, dst) for dst in stack]
     return reg_stack
 
@@ -76,7 +76,7 @@ def overlay_pics(src, dst):
 # ---------------main-------------------------------
 
 
-def registration(img_stack):
+def main(img_stack):
     """input: ndarray of images
     ouput: ndarray of registered images
     """
@@ -85,7 +85,7 @@ def registration(img_stack):
     reg_stack = reg_iter(img_stack)
 
     if not np.array_equal(img_stack[0], reg_stack[0]):
-        print("destination image has been changed in registered stack.")
+        assert False, "destination image has been changed in registered stack."
     # src and dst images should be different
     assert not np.array_equal(img_stack[0], reg_stack[1])
     return io.concatenate_images(reg_stack)
@@ -106,7 +106,7 @@ if __name__ == "__main__":
         imageVolume = io.ImageCollection(imageFiles, as_grey=True).concatenate()
         stack = imageVolume
 
-        reg_stack = registration(stack)
+        reg_stack = main(stack)
         i = 0;
         for img in reg_stack:
             io.imsave('reg{}',img).format(i)
@@ -126,8 +126,9 @@ if __name__ == "__main__":
     #imageVolume = io.ImageCollection(imageFiles, as_grey=True).concatenate()
     #stack = imageVolume
 
-    # reg_stack = registration(stack)
-    reg_stack = data.test()
+    # reg_stack = main(stack)
+    stack = data.test_stack()
+    reg_stack = main(stack)
 
     print('stack is of type', type(stack))
     print('stack dimensions are', stack.shape)
