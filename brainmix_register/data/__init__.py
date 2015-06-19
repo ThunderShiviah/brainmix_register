@@ -4,6 +4,9 @@ import os
 from skimage import io
 from . import all, test
 from skimage.io import imread, use_plugin
+from skimage import color
+
+__all__ = ['all','test']
 
 def load_image(file_name, inputDir):
     """Loads an image."""
@@ -16,7 +19,6 @@ def load_stack(inputDir):
     """Loads .jpg files from a directory and concatenates into an image stack\
      using io.ImageCollection."""
 
-    print(inputDir)
     imageFiles = glob.glob(os.path.join(inputDir, '*.jpg'))
     imageVolume = io.ImageCollection(imageFiles, as_grey=True).concatenate()
     return imageVolume
@@ -27,7 +29,9 @@ def image():
 
 
     inputDir = '{}'.format(all.__path__[0])
-    return load_image('p1-D3-01b.jpg',inputDir)
+    img = load_image('p1-D3-01b.jpg',inputDir)
+    img = color.rgb2grey(img)
+    return img 
 
 def test_stack():
     """Load a stack from the test directory.
