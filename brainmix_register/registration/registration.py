@@ -14,7 +14,8 @@ from .. import data  # Should this be a relative import?
 
 def reg(src, dst):
     """Takes in a source and destination image and returns a
-    registered destination (target) image. See scikit-image 
+    registered destination (target) image. Note: This registration method
+    is a rigid translation. See scikit-image 
     feature.register_translation for more information
 
     src: the reference image
