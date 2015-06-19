@@ -4,7 +4,7 @@ from skimage import viewer
 import registration as reg
 from skimage import data
 
-def main():
+def display():
     pass
 
 
