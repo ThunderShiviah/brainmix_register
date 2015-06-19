@@ -5,7 +5,7 @@ from brainmix_register.registration.registration import main as register
 from brainmix_register.registration.registration import overlay_pics
 from skimage import io
 
-def main():
+def demo():
     """Loads an example image stack from data.test_stack() and registers the
     stack using the main register function in sub-package registration. 
     Returns data about stack type, stack dimensions. Displays the pre and 

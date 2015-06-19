@@ -14,15 +14,15 @@ def import_test_module_test():
     except:
         assert False
 
-def import_main_function_test():
+def import_demo_function_test():
     try:
-        from brainmix_register.demo.test import main
+        from brainmix_register.demo.test import demo
     except:
         assert False
 
 def run_demo_test():
-    from brainmix_register.demo.test import main
-    main()
+    from brainmix_register.demo.test import demo
+    demo()
 
      
 
