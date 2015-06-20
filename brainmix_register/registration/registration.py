@@ -6,6 +6,7 @@ from skimage import io
 from skimage import transform as tf
 import matplotlib.pyplot as plt
 from skimage.color import gray2rgb
+
 from brainmix_register import data  # Should this be a relative import?
 
 
