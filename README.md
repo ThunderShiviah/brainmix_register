@@ -2,7 +2,7 @@
 
 brainmix_register is a python image registration library built on [scikit-image](http://scikit-image.org/).
 
-See [the brainmix_register tutorial](http://nbviewer.ipython.org/github/ThunderShiviah/brainmix_register/blob/master/docs/notebooks/brainmix-register-tutorial.ipynb) for a walkthrough using ipython notebook).
+See [the brainmix_register tutorial](http://nbviewer.ipython.org/github/ThunderShiviah/brainmix_register/blob/master/docs/notebooks/brainmix-register-tutorial.ipynb) for a walkthrough using ipython notebook.
 
 # Installation
 Currently, brainmix_register is being developed using python 2.7. The recommended way to install is by downloading the repository via github:
