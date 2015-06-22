@@ -10,8 +10,10 @@ Contents:
 
 .. toctree::
    :maxdepth: 2
+   modules
 
-   example
+
+
 
 
 Indices and tables
